@@ -36,16 +36,16 @@ train:
 classify:
 	cd ../../;./build/examples/cpp_classification/classification.bin \
 	  examples/$(NAME)/models/alexnet/deploy.prototxt \
-	  examples/$(NAME)/models/alexnet/caffe_alexnet_train_iter_700.caffemodel \
+	  examples/$(NAME)/models/alexnet/caffe_alexnet_train_iter_500.caffemodel \
 	  examples/$(NAME)/data/mean.binaryproto \
 	  examples/$(NAME)/models/alexnet/labels.txt \
-	  examples/$(NAME)/data/images/bad-image1378.jpg
+	  examples/$(NAME)/data/images/bad-image1084.jpg
 
 rel:
 	rm -rf $(RELEASE_DIR);
 	mkdir $(RELEASE_DIR);
 	cp ./models/alexnet/deploy.prototxt $(RELEASE_DIR)/deploy.prototxt;
-	cp ./models/alexnet/caffe_alexnet_train_iter_700.caffemodel $(RELEASE_DIR)/weights.caffemodel;
+	cp ./models/alexnet/caffe_alexnet_train_iter_500.caffemodel $(RELEASE_DIR)/weights.caffemodel;
 	cp ./data/mean.binaryproto $(RELEASE_DIR)/mean.binaryproto;
 	cp ./models/alexnet/labels.txt $(RELEASE_DIR)/labels.txt;
 	

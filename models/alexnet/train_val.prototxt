@@ -8,18 +8,18 @@ layer {
     phase: TRAIN
   }
 # mean pixel / channel-wise mean instead of mean image
-  transform_param {
-    crop_size: 227
-    mean_value: 104
-    mean_value: 117
-    mean_value: 123
-    mirror: true
-  }
-# transform_param {
-#    mirror: true
+#  transform_param {
 #    crop_size: 227
-#    mean_file: "examples/horda-scanner-caffe-model/data/mean.binaryproto" # MODIFIED
+#    mean_value: 104
+#    mean_value: 117
+#    mean_value: 123
+#    mirror: true
 #  }
+  transform_param {
+     mirror: true
+     crop_size: 227
+     mean_file: "examples/horda-scanner-caffe-model/data/mean.binaryproto" # MODIFIED
+  }
   data_param {
     source: "examples/horda-scanner-caffe-model/db/train_lmdb" # MODIFIED
     batch_size: 16
@@ -35,18 +35,18 @@ layer {
     phase: TEST
   }
   # mean pixel / channel-wise mean instead of mean image
+  # transform_param {
+  #   crop_size: 227
+  #   mean_value: 104
+  #   mean_value: 117
+  #   mean_value: 123
+  #   mirror: true
+  # }
   transform_param {
+    mirror: false
     crop_size: 227
-    mean_value: 104
-    mean_value: 117
-    mean_value: 123
-    mirror: true
+    mean_file: "examples/horda-scanner-caffe-model/data/mean.binaryproto" # MODIFIED
   }
-#  transform_param {
-#    mirror: false
-#    crop_size: 227
-#    mean_file: "examples/horda-scanner-caffe-model/data/mean.binaryproto" # MODIFIED
-#  }
   data_param {
     source: "examples/horda-scanner-caffe-model/db/val_lmdb" # MODIFIED
     batch_size: 10
